@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace SwiitchBotTestConsole
 {
     public class JsonUtility
     {
-        public JsonUtility()
-        {
-            
-
-            
-        }
+        public JsonUtility(){  }
 
         /// <summary>
-        /// 
+        /// Jsonデシリアライズ
         /// </summary>
         /// <param name="responceData"></param>
         /// <returns></returns>

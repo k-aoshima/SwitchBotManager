@@ -92,9 +92,6 @@
     <Compile Include="ResponceData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\SceneData.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Xml\SwitchBotSetting.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
