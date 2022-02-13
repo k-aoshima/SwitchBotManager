@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,57 @@ namespace SwiitchBotTestConsole
         private static readonly string StatusFormat = "StatusCode:{0}";
 
         /// <summary>
+        /// 取得シーン一覧
+        /// </summary>
+        public Dictionary<string, string> SceneDictionary;
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public HttpControl()
         {
             _switchBotSetting = FileSystemUtils.LoadSwitchBotSetting();
+        }
+
+        /// <summary>
+        /// シーン取得
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string> GetSceneAsync()
+        {
+            string resultJson = string.Empty;
+            try
+            {
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, SwitchBotUrl);
+                    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", _switchBotSetting.Authorization);
+
+                    HttpResponseMessage result = await httpClient.SendAsync(requestMessage);
+
+                    resultJson = await result.Content.ReadAsStringAsync();
+
+                    if (result.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        Console.WriteLine("StatusOK");
+                    }
+                    else
+                    {
+                        Console.WriteLine("StatusNG");
+                        Console.WriteLine(string.Format(StatusFormat, result.StatusCode));
+                    }
+
+                    Console.WriteLine(resultJson);
+
+                    return resultJson;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return resultJson;
+            }
+
         }
 
         /// <summary>
@@ -43,8 +90,6 @@ namespace SwiitchBotTestConsole
                 {
 
                     HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, SwitchBotUrl + sceneID + "/execute");
-                    RequestData requestData = new RequestData();
-                    var content = new StringContent(JsonUtility.JsonSerialize(requestData), Encoding.UTF8, "application/json");
                     httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", _switchBotSetting.Authorization);
 
                     HttpResponseMessage result = await httpClient.SendAsync(requestMessage);
@@ -69,6 +114,9 @@ namespace SwiitchBotTestConsole
             }
 
         }
+
+        
+
 
     }
 }

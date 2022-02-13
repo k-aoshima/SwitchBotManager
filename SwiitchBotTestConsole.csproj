@@ -89,8 +89,8 @@
     <Compile Include="SceneData.cs" />
     <Compile Include="SwitchBotSetting.cs" />
     <Compile Include="HttpControl.cs" />
-    <Compile Include="RequestData.cs" />
     <Compile Include="JsonUtility.cs" />
+    <Compile Include="ResponceData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Xml\SceneData.xml">
