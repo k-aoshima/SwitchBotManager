@@ -86,7 +86,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FileSystemUtils.cs" />
-    <Compile Include="SceneData.cs" />
     <Compile Include="SwitchBotSetting.cs" />
     <Compile Include="HttpControl.cs" />
     <Compile Include="JsonUtility.cs" />

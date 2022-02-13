@@ -6,7 +6,7 @@ namespace SwiitchBotTestConsole
 {
     class MainClass
     {
-        private static SceneData _sceneData;
+        
         private static object _lockObj;
         private static ResponceData _responceData;
 
@@ -16,7 +16,6 @@ namespace SwiitchBotTestConsole
         {
 
             Console.WriteLine("Run SwitcBotAPI");
-            _sceneData = FileSystemUtils.LoadSeceneData();
             HttpControl httpControl = new HttpControl();
 
             _lockObj = new object();
